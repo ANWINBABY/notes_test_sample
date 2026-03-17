@@ -5,7 +5,7 @@ from datetime import timedelta
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.environ.get("SECRET_KEY")
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [
     "notes-backend.onrender.com"
@@ -44,7 +44,7 @@ MIDDLEWARE = [
 ]
 
 # CORS
-CORS_ALLOW_ALL_ORIGINS = False
+CORS_ALLOW_ALL_ORIGINS = True
 
 ROOT_URLCONF = 'note_management.urls'
 
