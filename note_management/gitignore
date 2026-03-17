@@ -1,0 +1,16 @@
+# React
+frontend/node_modules/
+frontend/build/
+frontend/.env
+
+# Django
+note_management/__pycache__/
+note_management/*.pyc
+note_management/db.sqlite3
+note_management/.env
+
+# Common
+venv/
+env/
+*.log
+.vscode/
