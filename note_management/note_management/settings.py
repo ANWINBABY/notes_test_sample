@@ -8,7 +8,9 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 DEBUG = False
 
 ALLOWED_HOSTS = [
-    "notes-backend.onrender.com"
+    'notes-backend.onrender.com'
+    'localhost',
+    '127.0.0.1'
 ]
 
 CSRF_TRUSTED_ORIGINS = [
