@@ -4,20 +4,22 @@ from datetime import timedelta
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# SECURITY
 SECRET_KEY = os.environ.get("SECRET_KEY")
+
 DEBUG = False
 
 ALLOWED_HOSTS = [
-    'notes-backend.onrender.com'
+    'notes-management-3rhb.onrender.com',
     'localhost',
     '127.0.0.1'
 ]
 
 CSRF_TRUSTED_ORIGINS = [
-    "https://notes-backend.onrender.com",
-    "https://notes-frontend.onrender.com"
+    "https://notes-management-3rhb.onrender.com"
 ]
 
+# APPLICATIONS
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -31,11 +33,12 @@ INSTALLED_APPS = [
     "notes_app",
 ]
 
+# MIDDLEWARE
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
 
-    "whitenoise.middleware.WhiteNoiseMiddleware",  
-    "corsheaders.middleware.CorsMiddleware",      
+    "whitenoise.middleware.WhiteNoiseMiddleware",   # for static (safe to keep)
+    "corsheaders.middleware.CorsMiddleware",
 
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -48,8 +51,10 @@ MIDDLEWARE = [
 # CORS
 CORS_ALLOW_ALL_ORIGINS = True
 
+# URLS
 ROOT_URLCONF = 'note_management.urls'
 
+# TEMPLATES
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -75,9 +80,10 @@ SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(days=1),
 }
 
+# WSGI
 WSGI_APPLICATION = 'note_management.wsgi.application'
 
-# Database
+# DATABASE (SQLite - OK for now)
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -85,11 +91,11 @@ DATABASES = {
     }
 }
 
-# Static files (FIXED ✅)
+# STATIC FILES (Required for Render, even if React is separate)
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-# Optional but recommended
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
+# DEFAULT FIELD
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
